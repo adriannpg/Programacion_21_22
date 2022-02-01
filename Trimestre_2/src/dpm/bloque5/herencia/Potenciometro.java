@@ -1,11 +1,12 @@
-package dpm.bloque5.excepciones;
+package dpm.bloque5.herencia;
 
 public class Potenciometro {
-	private float[] valoresPotencia;
-	private int posicionSeleccionada;
+	protected float[] valoresPotencia;
+	protected int posicionSeleccionada;
 
 	public Potenciometro() {
 		this(10);
+		System.out.println("Constructor Potenciometro()");
 	}
 
 	public Potenciometro(int size) {
@@ -20,6 +21,7 @@ public class Potenciometro {
 
 	public Potenciometro(float[] potencias) {
 		int i = 0;
+		System.out.println("Constructor Potenciometro(float[])");
 		if (potencias.length < 2) {
 			throw new RuntimeException();
 		}
@@ -27,7 +29,7 @@ public class Potenciometro {
 			i++;
 		}
 		if (potencias[i] >= potencias[i + 1]) {
-			throw new RuntimeException("Potencia no valida");
+			throw new RuntimeException("Las potencias no están en orden.");
 		}
 		this.valoresPotencia = new float[potencias.length];
 		for (i = 0; i < potencias.length; i++) {
@@ -35,6 +37,13 @@ public class Potenciometro {
 		}
 	}
 
+	// TODO Ejercicio
+//	public static float potenciaTotal(Potenciometro[] potenciometros) {
+//		potenciometros[3].getPotencia()
+//	}
+	
+	
+	
 	public void subir() {
 		if (posicionSeleccionada < valoresPotencia.length - 1) {
 			posicionSeleccionada++;
